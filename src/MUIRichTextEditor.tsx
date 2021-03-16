@@ -51,6 +51,7 @@ export type TMUIRichTextEditorRef = {
     insertAtomicBlock: (name: string, data: any) => void
     insertAtomicBlockSync: (name: string, data: any) => void
     insertAtomicBlockAsync: (name: string, promise: Promise<TAsyncAtomicBlockResponse>, placeholder?: string) => void
+    applyChange: (callback: (editorState: EditorState) => EditorState) => void
 }
 
 export type TDraftEditorProps = {
@@ -276,7 +277,8 @@ const MUIRichTextEditor: RefForwardingComponent<TMUIRichTextEditorRef, IMUIRichT
         },
         insertAtomicBlockAsync: (name: string, promise: Promise<TAsyncAtomicBlockResponse>, placeholder?: string) => {
             handleInsertAtomicBlockAsync(name, promise, placeholder)
-        }
+        },
+        applyChange: callback => setEditorState(callback)
     }))
 
     useEffect(() => {

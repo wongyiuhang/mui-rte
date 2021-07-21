@@ -20,6 +20,7 @@
   "homepage": "https://github.com/nk2580/mui-rte#readme",
   "main": "dist/index.js",
   "scripts": {
+    "prepare": "npm run build",
     "serve": "cross-env webpack-dev-server --mode development",
     "watch": "cross-env NODE_ENV=development rollup -c -w",
     "build": "cross-env NODE_ENV=production rollup -c",
